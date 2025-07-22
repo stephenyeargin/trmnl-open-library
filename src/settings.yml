@@ -17,7 +17,7 @@ custom_fields:
   name: About This Plugin
   field_type: author_bio
   description: View your reading lists on Open Library
-  github_url: https://github.com/trmnl-open-library
+  github_url: https://github.com/stephenyeargin/trmnl-open-library
   learn_more_url: https://openlibrary.org/
   email_address: stephen@yearg.in
 - keyname: open_library_username
