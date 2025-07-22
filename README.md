@@ -1,5 +1,11 @@
 # TRMNL Plugin
 
+[![Build and Release](https://github.com/stephenyeargin/trmnl-open-library/actions/workflows/build.yml/badge.svg)](https://github.com/stephenyeargin/trmnl-open-library/actions/workflows/build.yml)
+
+![promo](assets/promo.png)
+
+## Screenshot
+
 ![screenshot](assets/screenshot.png)
 
 ## Development

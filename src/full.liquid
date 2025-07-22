@@ -1,33 +1,36 @@
-<div class="layout layout--row">
-  <div
-    class="column"
-    data-list-limit="true"
-    data-list-hidden-count="true"
-    data-list-max-height="410"
-    data-list-max-columns="2"
-  >
-    {% for item in data %}
-    <div class="item">
-      <div class="meta"></div>
-      <div class="content">
-        <div class="flex gap--medium">
-          <div class="">
-            <div><span class="title title--small clamp--2 clamp--nicely">{{ item.title }}</span></div>
-            <div><span class="label label--small">by {{ item.author }} | {{ item.category }}</span></div>
-            <div><span class="description clamp--2">{{ item.content }}</span></div>
-          </div>
-          <div>
-            <img class="image image-dither w--32" src="https://placehold.co/600x400/000000/FFF?text={{ item.category }}" />
-          </div>
-        </div>
-      </div>
+{% assign columns = 1 %}
+{% if open_library_display == 'all' %}
+  {% assign columns = 3 %}
+{% endif %}
+{% if open_library_display == 'reading_and_want_to_read' %}
+  {% assign columns = 2 %}
+{% endif %}
+
+<div class="layout layout--row layout--top">
+  <div class="grid grid--cols-{{ columns }} gap--medium">
+    {% if open_library_display == 'all' or open_library_display == 'want_to_read' or open_library_display == 'reading_and_want_to_read' %}
+    <div class="">
+      {% render 'reading_list', reading_list: IDX_1, title: 'Want to Read', count: open_library_count, show_covers: open_library_covers %}
     </div>
-    {% endfor %}
+    {% endif %}
+    {% if open_library_display == 'all' or open_library_display == 'reading' or open_library_display == 'reading_and_want_to_read' %}
+    <div class="">
+      {% render 'reading_list', reading_list: IDX_2, title: 'Currently Reading', count: open_library_count, show_covers: open_library_covers %}
+    </div>
+    {% endif %}
+    {% if open_library_display == 'all' or open_library_display == 'already_read'%}
+    <div class="">
+      {% render 'reading_list', reading_list: IDX_3, title: 'Already Read', count: open_library_count, show_covers: open_library_covers %}
+    </div>
+    {% endif %}
+    {% if open_library_display != 'all' and open_library_display != 'reading_and_want_to_read' open_library_display != 'want_to_read' and open_library_display != 'reading' and open_library_display != 'already_read' %}
+      <span class="title title--small clamp--none">You must pick a valid list!</span>
+    {% endif %}
   </div>
 </div>
 
 <div class="title_bar">
   <img class="image image-stroke--medium" src="data:image/svg+xml;base64,{{ logo_svg | base64_encode }}" />
-  <span class="title">Plugin Template</span>
+  <span class="title">{{ open_library_user.displayname }}'s Reading List</span>
   <span class="instance">{{ trmnl.plugin_settings.instance_name }}</span>
 </div>

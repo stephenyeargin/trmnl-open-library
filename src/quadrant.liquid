@@ -1,17 +1,30 @@
+{% assign columns = 1 %}
+
 <div class="layout layout--row layout--top">
-  <div class="grid grid--cols-1 gap--medium">
-    <div class="item">
-      <div class="meta"></div>
-      <div class="content">
-        <div class="label label--medium">Quadrant</div>
-        <div class="description">Replace me with your content!</div>
-      </div>
+  <div class="grid grid--cols-{{ columns }} gap--medium">
+    {% if open_library_display == 'all' or open_library_display == 'want_to_read' or open_library_display == 'reading_and_want_to_read' %}
+    <div class="">
+      {% render 'reading_list', reading_list: IDX_1, title: 'Want to Read', count: open_library_count, show_covers: open_library_covers %}
     </div>
+    {% endif %}
+    {% if open_library_display == 'all' or open_library_display == 'reading' or open_library_display == 'reading_and_want_to_read' %}
+    <div class="">
+      {% render 'reading_list', reading_list: IDX_2, title: 'Currently Reading', count: open_library_count, show_covers: open_library_covers %}
+    </div>
+    {% endif %}
+    {% if open_library_display == 'all' or open_library_display == 'already_read'%}
+    <div class="">
+      {% render 'reading_list', reading_list: IDX_3, title: 'Already Read', count: open_library_count, show_covers: open_library_covers %}
+    </div>
+    {% endif %}
+    {% if open_library_display != 'all' and open_library_display != 'reading_and_want_to_read' open_library_display != 'want_to_read' and open_library_display != 'reading' and open_library_display != 'already_read' %}
+      <span class="title title--small clamp--none">You must pick a valid list!</span>
+    {% endif %}
   </div>
 </div>
 
 <div class="title_bar">
   <img class="image image-stroke--medium" src="data:image/svg+xml;base64,{{ logo_svg | base64_encode }}" />
-  <span class="title">Plugin Template</span>
+  <span class="title">{{ open_library_user.displayname }}'s Reading List</span>
   <span class="instance">{{ trmnl.plugin_settings.instance_name }}</span>
 </div>

@@ -1,28 +1,54 @@
-#
-# Changes to this file will be overwritten by `trmnlp pull`.
-#
-# Docs: https://help.usetrmnl.com/en/articles/10542599-importing-and-exporting-private-plugins#h_581fb988f0
-#
 ---
 strategy: polling
 no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
 polling_verb: get
-polling_url: 'https://api.vercel.app/blog'
-polling_headers: 'content-type=application/json'
-name: Plugin Template
-refresh_interval: 1440
+polling_url: |
+  https://openlibrary.org/people/{{ open_library_username }}.json
+  https://openlibrary.org/people/{{ open_library_username }}/books/want-to-read.json
+  https://openlibrary.org/people/{{ open_library_username }}/books/currently-reading.json
+  https://openlibrary.org/people/{{ open_library_username }}/books/already-read.json
+polling_headers: content-type=application/json
+polling_body: 
+id: 124200
 custom_fields:
 - keyname: author_bio
   name: About This Plugin
   field_type: author_bio
-  description: This is template text you should probably update 😁
-  github_url: https://github.com/
-  learn_more_url: https://usetrmnl.com/
-  email_address: email@example.com
-- keyname: example_string
+  description: View your reading lists on Open Library
+  github_url: https://github.com/trmnl-open-library
+  learn_more_url: https://openlibrary.org/
+  email_address: stephen@yearg.in
+- keyname: open_library_username
   field_type: string
-  name: A Configurable String
-  description: Save some data here for use in URLs or controlling the display
-  placeholder: An Example Value
+  name: Open Library Username
+  description: Your login username to Open Library / The Internet Archive
+  placeholder: brewster
+- keyname: open_library_count
+  field_type: number
+  default: 3
+  name: Books to Show
+  description: Count of the books to show in each list
+  placeholder: 3
+- keyname: open_library_display
+  field_type: select
+  default: all
+  name: Lists to Show
+  description: Lists to display in the dashboard
+  options:
+  - All: all
+  - Reading + Want to Read: reading_and_want_to_read
+  - Reading: reading
+  - Want to Read: want_to_read
+  - Already Read: already_read
+- keyname: open_library_covers
+  field_type: select
+  default: true
+  name: Show Covers
+  description: Display book covers, if available
+  options:
+  - Show Covers: true
+  - Hide Covers: false
+name: Open Library
+refresh_interval: 60

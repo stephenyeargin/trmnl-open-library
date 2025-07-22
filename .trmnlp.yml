@@ -7,12 +7,17 @@ watch:
   - src
 
 # values of custom fields (defined in src/settings.yml)
-custom_fields: {}
+custom_fields: {
+  open_library_username: mekBot,
+  open_library_count: 3,
+  open_library_display: all,
+  open_library_covers: true
+}
 
 # override variables
 variables:
   trmnl: {
     plugin_settings: {
-      instance_name: 'My Instance'
+      instance_name: 'Open Library'
     }
   }
