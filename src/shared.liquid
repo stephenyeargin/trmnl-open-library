@@ -5,7 +5,7 @@
 
 {% assign open_library_count = trmnl.plugin_settings.custom_fields_values.open_library_count %}
 {% assign open_library_display = trmnl.plugin_settings.custom_fields_values.open_library_display %}
-{% assign open_library_covers = trmnl.plugin_settings.custom_fields_values.open_library_covers %}
+{% assign open_library_covers = trmnl.plugin_settings.custom_fields_values.open_library_covers | plus: 0 %}
 
 {%- capture logo_svg %}
 <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="55 15 710.00003 435" version="1.1" id="svg23" sodipodi:docname="open-library-tight-logo.svg" inkscape:version="0.92.1 r15371" width="710" height="435">
@@ -92,7 +92,7 @@
 <div class="item mb--2">
   <div class="meta"></div>
   <div class="text--center">
-    {% if show_covers %}
+    {% if show_covers == 1 %}
     {% if item.work.cover_edition_key != blank %}
     <img src="https://covers.openlibrary.org/b/olid/{{ item.work.cover_edition_key }}-M.jpg" class="image image-dither image-stroke--black image-stroke--small w--16" style="object-fit: cover; filter: grayscale(1) contrast(1.2) brightness(1.1) saturate(0.8);" />
     {% else %}
