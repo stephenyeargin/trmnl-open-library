@@ -7,7 +7,7 @@
 {% endif %}
 
 <div class="layout layout--row layout--top">
-  <div class="grid grid--cols-{{ columns }} gap--medium">
+  <div class="grid grid--cols-{{ columns }} gap--medium lg:gap--large">
     {% if open_library_display == 'all' or open_library_display == 'want_to_read' or open_library_display == 'reading_and_want_to_read' %}
     <div class="">
       {% render 'reading_list', reading_list: IDX_1, title: 'Want to Read', count: open_library_count, show_covers: open_library_covers %}
@@ -24,7 +24,7 @@
     </div>
     {% endif %}
     {% if open_library_display != 'all' and open_library_display != 'reading_and_want_to_read' open_library_display != 'want_to_read' and open_library_display != 'reading' and open_library_display != 'already_read' %}
-      <span class="title title--small clamp--none">You must pick a valid list!</span>
+      <span class="title title--small lg:title--base">You must pick a valid list!</span>
     {% endif %}
   </div>
 </div>
