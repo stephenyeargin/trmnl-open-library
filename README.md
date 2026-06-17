@@ -1,6 +1,6 @@
 # TRMNL Plugin
 
-[![Build and Release](https://github.com/stephenyeargin/trmnl-open-library/actions/workflows/build.yml/badge.svg)](https://github.com/stephenyeargin/trmnl-open-library/actions/workflows/build.yml)
+[![Build and Release](https://github.com/stephenyeargin/trmnl-open-library/actions/workflows/build.yml/badge.svg)](https://github.com/stephenyeargin/trmnl-open-library/actions/workflows/build.yml) [![TRMNL Recipe Connections](https://trmnl-badges.gohk.xyz/badge/connections?recipe=124200)](https://trmnl.com/recipes/124200)
 
 ![promo](assets/promo.png)
 
