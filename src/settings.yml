@@ -52,5 +52,5 @@ custom_fields:
   - Show Covers: true
   - Hide Covers: false
 name: Open Library
-description: Personal reading list and book covers from Open Library
+description: Personal reading list & covers
 refresh_interval: 60
